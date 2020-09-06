@@ -16,10 +16,10 @@ public class MailConstructor {
 
 
 	    public SimpleMailMessage constructResetTokenEmail(
-	            String contextPath, Locale locale, String token, User user, String password
+	            String contextPath, Locale locale, String token, User user, String password,String encryptedPassword
 	    ) {
 	        String url = contextPath+"/confirm-account?token="+token;
-	        String message = "\nPlease click on this link to verify your email and edit your personal information. Your password is: \n"+password;
+	        String message = "\nPlease click on this link to verify your email and edit your personal information. Your password is: \n"+password+"\n"+encryptedPassword;
 	        SimpleMailMessage email = new SimpleMailMessage();
 	        email.setTo(user.getEmail());
 	        email.setSubject("Le's Blood Donation Bangladesh - New User");

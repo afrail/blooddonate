@@ -33,9 +33,6 @@ public class HomeController {
 	PasswordResetTokenRepository passwordResetTokenRepository;
 	
 	@Autowired
-	private PasswordEncoder pass;
-	
-	@Autowired
     private JavaMailSender mailSender;
     @Autowired
     private UserRepository userRepository;
@@ -68,7 +65,7 @@ public class HomeController {
 	        if(userService.findByUsername(user.getUsername()) != null) {
 	            model.addAttribute("usernameExists", true);
 
-	            return "myAccount";
+	            return "login";
 	        }
 	        model.addAttribute("classActiveNewAccount", true);
 	        model.addAttribute("email", user.getEmail());
@@ -78,7 +75,7 @@ public class HomeController {
 	        if(userService.findByEmail(user.getEmail()) != null) {
 	            model.addAttribute("emailExists", true);
 
-	            return "myAccount";
+	            return "login";
 	        }
 
 	        User user1 = new User();
@@ -87,16 +84,14 @@ public class HomeController {
 	        user1.setFirstName(user.getFirstName());
 	        user1.setLastName(user.getLastName());
 	        String password = SecurityUtility.randomPassword();
-	        String encryptedPassword =SecurityUtility.passwordEncoder().encode(user.getPassword()); 
+	        String encryptedPassword =SecurityUtility.passwordEncoder().encode(password); 
 	        user1.setPassword(encryptedPassword);
-	        
-	        user.setPassword(pass.encode(user.getPassword()));
 	        Role role = new Role();
 	        role.setRoleId(1);
 	        role.setName("ROLE_USER");
 	        Set<UserRole> userRoles = new HashSet<>();
-	        userRoles.add(new UserRole(user, role));
-	        userService.createUser(user, userRoles);
+	        userRoles.add(new UserRole(user1, role));
+	        userService.createUser(user1, userRoles);
 
 	        String token = UUID.randomUUID().toString();
 	        userService.createPasswordResetTokenForUser(user, token);
@@ -104,11 +99,12 @@ public class HomeController {
 	        String appUrl = "http://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath();
 
 
-	        SimpleMailMessage email = mailConstructor.constructResetTokenEmail(appUrl, request.getLocale(), token, user,user.getPassword());
+	        SimpleMailMessage email = mailConstructor.constructResetTokenEmail(appUrl, request.getLocale(), token, user,password,encryptedPassword);
 
 	        mailSender.send(email);
 
 	        model.addAttribute("emailSent", "true");
+	        
 
 	       
 	        return "login";
@@ -132,7 +128,8 @@ public class HomeController {
 	        }
 
 	        return modelAndView;
-	    }
+	    } 
+	  
 	 
 	
 }

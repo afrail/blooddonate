@@ -36,9 +36,8 @@ PasswordResetTokenRepository passwordResetTokenRepository;
 	            }
 
 	            user.getUserRoles().addAll(userRoles);
-
-	          
-	                
+	            user.setEnabled(true);
+	             
 	            localUser = userRepository.save(user);
 	        }
 

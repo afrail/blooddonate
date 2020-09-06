@@ -18,6 +18,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	
 @Autowired
 UserSecurityService userSecurityService;
+
 private BCryptPasswordEncoder passwordEncoder() {
     return SecurityUtility.passwordEncoder();
 }
@@ -40,6 +41,7 @@ private BCryptPasswordEncoder passwordEncoder() {
 	            "/searchBook",
 	            "/register",
 	            "/confirm-account",
+	            
 	            
 	            
 	    };

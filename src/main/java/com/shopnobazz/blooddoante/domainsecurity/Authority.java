@@ -2,7 +2,6 @@ package com.shopnobazz.blooddoante.domainsecurity;
 
 import org.springframework.security.core.GrantedAuthority;
 
-@SuppressWarnings("serial")
 public class Authority implements GrantedAuthority {
 
 
