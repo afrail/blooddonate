@@ -1,0 +1,49 @@
+<html>
+<title>test login page </title>
+<h1>this is my first login page </h1>
+<body>
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"> 
+    <head>  
+        <title>Register</title>  
+    </head>  
+    <body> 
+    <div> 
+        <form action="#" th:action="@{/profile/addNewAddress}" th:object="${address}" method="post">  
+            <table> 
+                 
+                <tr>  
+                    <td><label for="division">City</label></td>  
+                    <td><input th:field="*{division}" type="text" name="division"></input></td>  
+                </tr>  
+                <tr>  
+                    <td><label for="lastName">Distric</label></td>  
+                    <td><input th:field="*{distric}" type="text" name="distric"></input></td>  
+                </tr> 
+                
+                <tr>  
+                    <td><label for="userName">Upazila</label></td>  
+                    <td><input th:field="*{upazila}" type="text" name="upazila"></input></td>  
+                </tr> 
+                 <tr>  
+                    <td><label for="others">Area</label></td>  
+                    <td><input th:field="*{others}" type="text" name="others"></input></td>  
+                </tr> 
+                <tr>  
+                    <td><label for="type">Type</label></td>  
+                    <td><input th:field="*{type}" type="text" name="type"></input></td>  
+                </tr> 
+
+                <tr>  
+                    <td><input type="reset" value="Clear"/></td>  
+                    <td><input type="submit" value="Submit"></input></td>  
+                </tr>  
+            </table>  
+        </form>  
+        </div>
+        <div>
+ 
+        </div>
+    </body>  
+</html>

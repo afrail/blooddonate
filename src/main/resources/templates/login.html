@@ -51,7 +51,10 @@
                 </tr>  
                 <tr>  
                     <td><input type="reset" value="Clear"/></td>  
-                    <td><input type="submit" value="Submit"></input></td>  
+                    <td><input type="submit" value="Submit"></input></td> 
+        <td>
+      <a th:href="@{/profile}"><span th:text="${user}"></span></a>
+     </td>
                 </tr>  
             </table>  
         </form>  

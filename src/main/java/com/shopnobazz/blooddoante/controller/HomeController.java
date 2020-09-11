@@ -92,9 +92,8 @@ public class HomeController {
 	        Set<UserRole> userRoles = new HashSet<>();
 	        userRoles.add(new UserRole(user1, role));
 	        userService.createUser(user1, userRoles);
-
 	        String token = UUID.randomUUID().toString();
-	        userService.createPasswordResetTokenForUser(user, token);
+	        userService.createPasswordResetTokenForUser(user1, token);
            
 	        String appUrl = "http://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath();
 
@@ -124,7 +123,7 @@ public class HomeController {
 	        else
 	        {
 	            modelAndView.addObject("message","The link is invalid or broken!");
-	            //modelAndView.setViewName(" accountVerifi faild ");
+	            //modelAndView.setViewName(" accountVerifi failed ");
 	        }
 
 	        return modelAndView;

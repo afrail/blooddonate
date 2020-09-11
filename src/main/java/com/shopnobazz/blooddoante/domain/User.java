@@ -2,8 +2,8 @@ package com.shopnobazz.blooddoante.domain;
  
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,10 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.shopnobazz.blooddoante.domainsecurity.Authority;
 import com.shopnobazz.blooddoante.domainsecurity.UserRole;
@@ -35,7 +33,15 @@ public class User implements UserDetails{
 	@Column(name = "email", nullable = false, updatable = false)
 	private String email;
 	private String phone;
+	private String bloodGroup;
 	private boolean enabled = false;
+	
+	@OneToMany(mappedBy = "user")
+	private List<Address> address;
+	
+	@OneToMany(mappedBy = "user")
+	private List<Post> post;
+	
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JsonIgnore
 	private Set<UserRole> userRoles = new HashSet<>();
@@ -43,16 +49,46 @@ public class User implements UserDetails{
 		
 	}
 	
-	public User(String username, String password, String firstName, String lastName, String email, String phone
-			) {
 	
+	
+
+	public User(String username, String password, String firstName, String lastName, String email, String phone,
+			String bloodGroup, boolean enabled, List<Address> address, List<Post> post, Set<UserRole> userRoles) {
+		
 		this.username = username;
 		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.phone = phone;
-		
+		this.bloodGroup = bloodGroup;
+		this.enabled = enabled;
+		this.address = address;
+		this.post = post;
+		this.userRoles = userRoles;
+	}
+	public List<Address> getAddress() {
+		return address;
+	}
+
+	public void setAddress(List<Address> address) {
+		this.address = address;
+	}
+
+	public List<Post> getPost() {
+		return post;
+	}
+
+	public void setPost(List<Post> post) {
+		this.post = post;
+	}
+
+	public String getBloodGroup() {
+		return bloodGroup;
+	}
+
+	public void setBloodGroup(String bloodGroup) {
+		this.bloodGroup = bloodGroup;
 	}
 
 	public Long getId() {
