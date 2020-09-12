@@ -10,27 +10,34 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.shopnobazz.blooddoante.Repository.AddressRepository;
 import com.shopnobazz.blooddoante.domain.Address;
 import com.shopnobazz.blooddoante.domain.User;
 import com.shopnobazz.blooddoante.service.AddressService;
 import com.shopnobazz.blooddoante.service.UserService;
+import com.zaxxer.hikari.util.FastList;
 @Controller
 @RequestMapping(value = "/profile")
 public class ProfileController {
+	@Autowired 
+	AddressRepository addressRepository;
+	
 	@Autowired
 	UserService userService;
 	@Autowired
 	AddressService addressService;
 	
-    @RequestMapping("/addNewAddress")
+    @RequestMapping("/home")
     public String addAddress(
             Model model, Principal principal
     ){
         User user = userService.findByUsername(principal.getName());
+        List<Address> address=addressRepository.findByUser(user);
         model.addAttribute("user", user);
-        Address address= new Address();
-        model.addAttribute("address", address);
-        return "profile";
+        model.addAttribute("address",address);
+        model.addAttribute("classAcctiveProfile",true);
+        return "profile2";
     }
     
     @RequestMapping(value = "/addNewAddress", method = RequestMethod.POST)
@@ -53,4 +60,5 @@ public class ProfileController {
 
         return "profile";
     }
+    
 }

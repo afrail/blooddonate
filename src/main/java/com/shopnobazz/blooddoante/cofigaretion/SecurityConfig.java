@@ -27,7 +27,7 @@ private BCryptPasswordEncoder passwordEncoder() {
 	 private static final String[] PUBLIC_MATCHERS = {
 	            "/css/**",
 	            "/js/**",
-	            "/image/**",
+	            "/images/**",
 	            "/home/**",
 	            "/newUser",
 	            "/forgetPassword",
@@ -41,6 +41,7 @@ private BCryptPasswordEncoder passwordEncoder() {
 	            "/searchBook",
 	            "/register",
 	            "/confirm-account",
+	            "/profile2"
 	            
 	            
 	            
