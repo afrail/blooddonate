@@ -16,7 +16,7 @@ import com.shopnobazz.blooddoante.domain.Address;
 import com.shopnobazz.blooddoante.domain.User;
 import com.shopnobazz.blooddoante.service.AddressService;
 import com.shopnobazz.blooddoante.service.UserService;
-import com.zaxxer.hikari.util.FastList;
+
 @Controller
 @RequestMapping(value = "/profile")
 public class ProfileController {
