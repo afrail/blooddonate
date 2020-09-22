@@ -40,8 +40,10 @@ private BCryptPasswordEncoder passwordEncoder() {
 	            "/searchByCategory",
 	            "/searchBook",
 	            "/register",
-	            "/confirm-account",
-	            "/profile2"
+	            "/",
+	            "/confirm-account"
+	            
+	            
 	            
 	            
 	            

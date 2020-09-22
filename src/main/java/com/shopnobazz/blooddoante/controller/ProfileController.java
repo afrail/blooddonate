@@ -1,9 +1,7 @@
 package com.shopnobazz.blooddoante.controller;
 
 import java.security.Principal;
-import java.util.Collections;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,7 +37,14 @@ public class ProfileController {
         model.addAttribute("classAcctiveProfile",true);
         return "profile2";
     }
-    
+    @RequestMapping("/addAddress")
+    public String addAddress(Model model)
+    {
+    	Address address = new Address();
+    	model.addAttribute("address",address);
+		return "profile";
+    	
+    }
     @RequestMapping(value = "/addNewAddress", method = RequestMethod.POST)
     public String addNewShippingAddress(
             @ModelAttribute("address") Address address,
@@ -58,7 +63,8 @@ public class ProfileController {
 //        model.addAttribute("listOfShippingAddresses", true);
        // model.addAttribute("orderList", user.getOrderList());
 
-        return "profile";
+        return "profile2";
     }
+    
     
 }

@@ -1,5 +1,4 @@
-<!doctype html><html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-  xmlns:th="http://www.thymeleaf.org" class=no-js>
+<!doctype html><html class=no-js lang=en>
     <meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
     <head>
         <meta charset=utf-8>
@@ -15,18 +14,18 @@
             <div class="header-main bg-inverse fixed-top bg-white">
                 <div class=container>
                     <div class=row>
-                        <nav class="navbar navbar-expand-lg navbar-light w-100" id=header-navbar>
-                            <a class="navbar-brand font-weight-bold" href=index.html style='text-shadow: 1px 4px 6px red'>Blood Donate Bangladesh</a>
+                      <nav class="navbar navbar-expand-lg navbar-light w-100" id=header-navbar>
+                            <a class="navbar-brand font-weight-bold" th:href="@{/}" style='text-shadow: 1px 4px 6px red'>Blood Donate Bangladesh</a>
                             <button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarSupportedContent aria-controls=navbarSupportedContent aria-expanded=false aria-label="Toggle navigation"><span class=navbar-toggler-icon></span></button>
                             <div class="collapse navbar-collapse" id=navbarSupportedContent>
                                 <ul class="navbar-nav ml-auto">
                                     <li class=nav-item>
                                         <a class="nav-link text-uppercase" data-toggle=none th:href="@{/}">HOME</a>
                                     </li>
-                                    <li class=nav-item><a class="nav-link text-uppercase" data-toggle=none  th:href="@{/profile/home}">PROFILE</a>
+                                    <li class=nav-item><a class="nav-link text-uppercase" data-toggle=none th:href="@{/profile/home}">PROFILE</a>
                                 </li>
                                 <li class=nav-item>
-                                    <a class="nav-link text-uppercase" data-toggle=none href="member.html">VIEW MEMBER</a>
+                                    <a class="nav-link text-uppercase" data-toggle=none th:href="@{/member/all}">VIEW MEMBER</a>
                                 </li>
                             </ul>
                             <div class=navbar-spacer></div><a class="btn btn-outline-info text-nowrap" href='#' data-toggle=none>LOGIN</a>
@@ -74,7 +73,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-176058743-1"></script><script>window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'UA-176058743-1');</script><script src=assets/js/vendor.js></script><script src=assets/js/polyfills.js></script>
-    <script src=assets/js/app.js></script>
+    gtag('config', 'UA-176058743-1');</script><script src=/js/vendor.js></script><script src=/js/polyfills.js></script>
+    <script src=/js/app.js></script>
 </body>
 </html>
