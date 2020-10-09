@@ -9,30 +9,32 @@
         <title>Register</title>  
     </head>  
     <body> 
-    <div> 
-        <form action="#" th:action="@{/profile/addNewAddress}" th:object="${address}" method="post">  
+    <div>  
+        <form  th:action="@{/profile/addNewAddress}"  th:object="${address}" method="post">  
             <table> 
                  
                 <tr>  
+               <td> <input hidden="hidden" name="id" th:value="${address.id}"/></td>
+               <td> <input hidden="hidden" name="id" th:value="${address.user}"/></td>
                     <td><label for="division">City</label></td>  
-                    <td><input th:field="*{division}" type="text" name="division"></input></td>  
+                    <td><input th:value="${address.division}" type="text" name="division"></input></td>  
                 </tr>  
                 <tr>  
                     <td><label for="lastName">Distric</label></td>  
-                    <td><input th:field="*{distric}" type="text" name="distric"></input></td>  
+                    <td><input th:value="${address.distric}"  type="text" name="distric"></input></td>  
                 </tr> 
                 
                 <tr>  
                     <td><label for="userName">Upazila</label></td>  
-                    <td><input th:field="*{upazila}" type="text" name="upazila"></input></td>  
+                    <td><input  th:value="${address.upazila}"  type="text" name="upazila"></input></td>  
                 </tr> 
                  <tr>  
                     <td><label for="others">Area</label></td>  
-                    <td><input th:field="*{others}" type="text" name="others"></input></td>  
+                    <td><input  th:value="${address.others}"  type="text" name="others"></input></td>  
                 </tr> 
                 <tr>  
                     <td><label for="type">Type</label></td>  
-                    <td><input th:field="*{type}" type="text" name="type"></input></td>  
+                    <td><input  th:value="${address.type}"  type="text" name="type"></input></td>  
                 </tr> 
 
                 <tr>  

@@ -12,6 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -36,8 +38,8 @@ public class User implements UserDetails{
 	private String bloodGroup;
 	private boolean enabled = false;
 	
-	@OneToMany(mappedBy = "user")
-	private List<Address> address;
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
+	private Address address;
 	
 	@OneToMany(mappedBy = "user")
 	private List<Post> post;
@@ -53,7 +55,7 @@ public class User implements UserDetails{
 	
 
 	public User(String username, String password, String firstName, String lastName, String email, String phone,
-			String bloodGroup, boolean enabled, List<Address> address, List<Post> post, Set<UserRole> userRoles) {
+			String bloodGroup, boolean enabled, Address address, List<Post> post, Set<UserRole> userRoles) {
 		
 		this.username = username;
 		this.password = password;
@@ -67,11 +69,11 @@ public class User implements UserDetails{
 		this.post = post;
 		this.userRoles = userRoles;
 	}
-	public List<Address> getAddress() {
+	public Address getAddress() {
 		return address;
 	}
 
-	public void setAddress(List<Address> address) {
+	public void setAddress(Address address) {
 		this.address = address;
 	}
 

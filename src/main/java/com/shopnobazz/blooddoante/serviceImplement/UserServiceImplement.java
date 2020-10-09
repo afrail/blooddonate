@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.shopnobazz.blooddoante.Repository.PasswordResetTokenRepository;
 import com.shopnobazz.blooddoante.Repository.RoleRepository;
 import com.shopnobazz.blooddoante.Repository.UserRepository;
+import com.shopnobazz.blooddoante.domain.Address;
 import com.shopnobazz.blooddoante.domain.User;
 import com.shopnobazz.blooddoante.domainsecurity.PasswordResetToken;
 import com.shopnobazz.blooddoante.domainsecurity.UserRole;
@@ -37,7 +38,10 @@ PasswordResetTokenRepository passwordResetTokenRepository;
 
 	            user.getUserRoles().addAll(userRoles);
 	            user.setEnabled(true);
-	             
+	            Address address = new Address();
+	            user.setAddress(address);
+	            address.setUser(user);
+	            
 	            localUser = userRepository.save(user);
 	        }
 

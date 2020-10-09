@@ -33,12 +33,8 @@ private BCryptPasswordEncoder passwordEncoder() {
 	            "/forgetPassword",
 	            "/login",
 	            "/fonts/**",
-	            "/bookshelf",
-	            "/bookDetail/**",
 	            "/hours",
 	            "/faq",
-	            "/searchByCategory",
-	            "/searchBook",
 	            "/register",
 	            "/",
 	            "/confirm-account"
@@ -59,7 +55,7 @@ private BCryptPasswordEncoder passwordEncoder() {
           .antMatchers("/forgetPassword").permitAll()
           
           .antMatchers("/home/**").hasAuthority("ROLE_ADMIN")
-          .antMatchers("/profile/**").hasAuthority("ROLE_USER")
+          .antMatchers("/profile/**","/member/**").hasAuthority("ROLE_USER")
           .anyRequest()
           .authenticated();
 

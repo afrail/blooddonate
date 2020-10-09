@@ -1,11 +1,13 @@
 package com.shopnobazz.blooddoante.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 @Entity
 
 public class Address {
@@ -18,7 +20,8 @@ public class Address {
 	private String distric;
     private String upazila;
     private String others;
-    @ManyToOne
+   
+    @OneToOne(cascade = CascadeType.ALL)
 	private User user;
     public Address() {
     	

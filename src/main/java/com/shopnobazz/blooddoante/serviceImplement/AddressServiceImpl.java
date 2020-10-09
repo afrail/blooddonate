@@ -16,15 +16,20 @@ AddressRepository addressRepository;
 	public Address createAddress(Address address,
 			User user) {
 		
-		Address address1= new Address();
-		address1.setDistric(address.getDistric());
-		address1.setDivision(address.getDivision());
-		address1.setOthers(address.getOthers());
-		address1.setUpazila(address.getUpazila());
-		address1.setType(address.getType());
-		address1.setUser(user);
+//		Address address1= new Address();
+//		address1.setDistric(address.getDistric());
+//		address1.setDivision(address.getDivision());
+//		address1.setOthers(address.getOthers());
+//		address1.setUpazila(address.getUpazila());
+//		address1.setType(address.getType());
 		
-		return addressRepository.save(address1) ;
+		address.setUser(user);
+		
+		return addressRepository.save(address) ;
+	}
+	@Override
+	public Address find(Long id) {
+		return addressRepository.findById(id).get();
 	}
 
 	

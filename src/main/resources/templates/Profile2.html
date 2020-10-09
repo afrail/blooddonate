@@ -53,17 +53,31 @@
                                 <img class="img-thumbnail " src="/images/donate-4.jpg" alt="donor Pic">
                             </div>
                             <div class="col-4 fs-4 my-5 mx-5">
-                            <form th:object="${address}" th:classappend="${classAcctiveProfile}? 'active'">
+                            <form >
                                 <p style='font-weight: 800;text-align: left;'>Name: <span style='font-weight:100; font-style: italic;'th:text="${user.firstName}"></span><span style='font-weight:100; font-style: italic;' th:text="${user.lastName}"></span></p>
                                 <p style='font-weight: 800;text-align: left;'>Email: <span style='font-weight:100; font-style: italic;'th:text="${user.email}"></span></p>
-                                <p style='font-weight: 800;text-align: left;'>Phone: <span style='font-weight:100; font-style: italic;'th:text="${user.phone}"></span></p>
+                                <p style='font-weight: 800;text-align: left;'>Blood Group: <span style='font-weight:100; font-style: italic;'th:text="${user.bloodGroup}"></span></p>
+                                <p style='font-weight: 800;text-align: left;'>phone: <span style='font-weight:100; font-style: italic;'th:text="${user.phone}"></span></p>
                                
                                 
                                 <button class="btn btn-outline-danger" style='width: 300px;padding: 3%; '>Edit</button>
+                               
+                                            <a th:href="@{/profile/updateaddress(id=${user.address.id})}"><span >Edit</span></a>
+                                       
                                 </form>
                                 
                                 
                             </div>
+                            <div>
+                            <form >
+                            <p style='font-weight: 800;text-align: left;'>Distric: <span style='font-weight:100; font-style: italic;'th:text="${user.address.distric}"></span></p>
+                                <p style='font-weight: 800;text-align: left;'>City: <span style='font-weight:100; font-style: italic;'th:text="${user.address.division}"></span></p>
+                                <p style='font-weight: 800;text-align: left;'>UpaZila: <span style='font-weight:100; font-style: italic;'th:text="${user.address.upazila}"></span></p>
+                                <p style='font-weight: 800;text-align: left;'>Aria: <span style='font-weight:100; font-style: italic;'th:text="${user.address.others}"></span></p>
+                                
+                            </form>   
+                            </div>
+                            
                         </div>
                         <div class="row">
 

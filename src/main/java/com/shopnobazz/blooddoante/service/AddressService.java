@@ -6,5 +6,5 @@ import com.shopnobazz.blooddoante.domain.User;
 public interface AddressService {
   
 Address createAddress(Address address,User user);
-
+Address find(Long id);
 }

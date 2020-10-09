@@ -19,16 +19,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import com.shopnobazz.blooddoante.Repository.PasswordResetTokenRepository;
 import com.shopnobazz.blooddoante.Repository.UserRepository;
+import com.shopnobazz.blooddoante.domain.Address;
 import com.shopnobazz.blooddoante.domain.User;
 import com.shopnobazz.blooddoante.domainsecurity.PasswordResetToken;
 import com.shopnobazz.blooddoante.domainsecurity.Role;
 import com.shopnobazz.blooddoante.domainsecurity.UserRole;
+import com.shopnobazz.blooddoante.service.AddressService;
 import com.shopnobazz.blooddoante.service.UserService;
 import com.shopnobazz.blooddoante.utility.MailConstructor;
 import com.shopnobazz.blooddoante.utility.SecurityUtility;
 @Controller
 public class HomeController {
-
+    @Autowired
+    AddressService addressService; 
 	@Autowired
 	PasswordResetTokenRepository passwordResetTokenRepository;
 	
@@ -83,7 +86,10 @@ public class HomeController {
 	        user1.setEmail(user.getEmail());
 	        user1.setFirstName(user.getFirstName());
 	        user1.setLastName(user.getLastName());
-	        String password = SecurityUtility.randomPassword();
+	        user1.setPhone(user.getPhone());
+	        user1.setBloodGroup(user.getBloodGroup());
+	        String password = user.getPassword();
+	        //String password = SecurityUtility.randomPassword();
 	        String encryptedPassword =SecurityUtility.passwordEncoder().encode(password); 
 	        user1.setPassword(encryptedPassword);
 	        Role role = new Role();
@@ -94,6 +100,7 @@ public class HomeController {
 	        userService.createUser(user1, userRoles);
 	        String token = UUID.randomUUID().toString();
 	        userService.createPasswordResetTokenForUser(user1, token);
+	        
            
 	        String appUrl = "http://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath();
 
