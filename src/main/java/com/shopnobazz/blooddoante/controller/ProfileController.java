@@ -50,7 +50,12 @@ public class ProfileController {
 	@RequestMapping(value = "/addNewAddress", method = RequestMethod.POST)
 	public String addNewShippingAddress(@ModelAttribute("address") Address address, Principal principal, Model model) {
 		User user = userService.findByUsername(principal.getName());
-         addressService.createAddress(address, user);
+//		addressRepository.findByUser(user);
+		 // user.getAddress().getId();
+		System.out.println("==========================");
+		System.out.println(user.getId());
+		System.out.println(address.getId());
+         addressService.createAddress(address,user);
 		//addressRepository.save(address);
 
 		model.addAttribute("user", user);

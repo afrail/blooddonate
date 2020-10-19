@@ -38,7 +38,7 @@ public class User implements UserDetails{
 	private String bloodGroup;
 	private boolean enabled = false;
 	
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "user", fetch=FetchType.LAZY)
 	private Address address;
 	
 	@OneToMany(mappedBy = "user")

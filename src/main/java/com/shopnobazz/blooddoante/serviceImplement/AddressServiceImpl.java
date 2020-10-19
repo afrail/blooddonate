@@ -13,16 +13,9 @@ public class AddressServiceImpl implements AddressService{
 @Autowired 
 AddressRepository addressRepository;
 	@Override
-	public Address createAddress(Address address,
-			User user) {
-		
-//		Address address1= new Address();
-//		address1.setDistric(address.getDistric());
-//		address1.setDivision(address.getDivision());
-//		address1.setOthers(address.getOthers());
-//		address1.setUpazila(address.getUpazila());
-//		address1.setType(address.getType());
-		
+	public Address createAddress(Address address,User user
+			) {
+		user.setAddress(address);
 		address.setUser(user);
 		
 		return addressRepository.save(address) ;

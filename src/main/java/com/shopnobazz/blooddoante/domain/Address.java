@@ -8,27 +8,28 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-@Entity
 
+@Entity
 public class Address {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id", nullable = false, updatable = false)
 	private Long id;
 	private String type;
 	private String division;
 	private String distric;
     private String upazila;
     private String others;
+    
    
     @OneToOne(cascade = CascadeType.ALL)
-	private User user;
+    private User user;
+    
     public Address() {
     	
     }
-	public Address(Long id, String division, String distric, String upazila, String others,String type,User user) {
+	public Address(String division, String distric, String upazila, String others,String type,User user) {
 		
-		this.id = id;
+		
 		this.division = division;
 		this.distric = distric;
 		this.upazila = upazila;
