@@ -3,11 +3,14 @@ package com.shopnobazz.blooddoante.domain;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+
 
 @Entity
 public class Address {
@@ -21,8 +24,9 @@ public class Address {
     private String others;
     
    
-    @OneToOne(cascade = CascadeType.ALL)
-    private User user;
+    @ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
     
     public Address() {
     	

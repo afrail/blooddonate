@@ -13,9 +13,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.shopnobazz.blooddoante.domainsecurity.Authority;
 import com.shopnobazz.blooddoante.domainsecurity.UserRole;
@@ -38,7 +41,7 @@ public class User implements UserDetails{
 	private String bloodGroup;
 	private boolean enabled = false;
 	
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "user", fetch=FetchType.LAZY)
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
 	private Address address;
 	
 	@OneToMany(mappedBy = "user")
@@ -47,6 +50,9 @@ public class User implements UserDetails{
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JsonIgnore
 	private Set<UserRole> userRoles = new HashSet<>();
+	
+	@Transient
+	private MultipartFile usrImage;
 	public User() {
 		
 	}
@@ -55,7 +61,7 @@ public class User implements UserDetails{
 	
 
 	public User(String username, String password, String firstName, String lastName, String email, String phone,
-			String bloodGroup, boolean enabled, Address address, List<Post> post, Set<UserRole> userRoles) {
+			String bloodGroup, boolean enabled, Address address, List<Post> post, Set<UserRole> userRoles,MultipartFile usrImage) {
 		
 		this.username = username;
 		this.password = password;
@@ -68,6 +74,7 @@ public class User implements UserDetails{
 		this.address = address;
 		this.post = post;
 		this.userRoles = userRoles;
+		this.usrImage=usrImage;
 	}
 	public Address getAddress() {
 		return address;
@@ -160,6 +167,21 @@ public class User implements UserDetails{
 	public void setUserRoles(Set<UserRole> userRoles) {
 		this.userRoles = userRoles;
 	}
+	
+
+	public MultipartFile getUsrImage() {
+		return usrImage;
+	}
+
+
+
+
+	public void setUsrImage(MultipartFile usrImage) {
+		this.usrImage = usrImage;
+	}
+
+
+
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

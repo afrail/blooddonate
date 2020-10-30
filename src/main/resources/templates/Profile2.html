@@ -50,7 +50,7 @@
                        <!-- th:classappend="${classActiveOrders}? 'show active'" sec:authorize="hasAuthority('ROLE_USER') --> 
                         <div class="row" >
                             <div class="col-6 mx-5">
-                                <img class="img-thumbnail " src="/images/donate-4.jpg" alt="donor Pic">
+                                <img class="img-thumbnail " th:src="@{/images/user/}+${user.id}+'.png'" alt="donor Pic">
                             </div>
                             <div class="col-4 fs-4 my-5 mx-5">
                             <form >

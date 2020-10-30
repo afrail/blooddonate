@@ -1,10 +1,14 @@
 package com.shopnobazz.blooddoante.serviceImplement;
 
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.shopnobazz.blooddoante.Repository.PasswordResetTokenRepository;
 import com.shopnobazz.blooddoante.Repository.RoleRepository;
@@ -43,6 +47,29 @@ PasswordResetTokenRepository passwordResetTokenRepository;
 	            address.setUser(user);
 	            
 	            localUser = userRepository.save(user);
+	            
+//	            MultipartFile userImage = user.getUsrImage();
+//
+//	            try {
+//	                byte[] bytes = userImage.getBytes();
+//	                String name = user.getId() + ".png";
+//	                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File("src/main/resources/static/images/user/" + name)));
+//	                stream.write(bytes);
+//	                stream.close();
+//
+//	            } catch (Exception e) {
+//	                e.printStackTrace();
+//	            }
+
+	            
+	            
+	            
+	            
+	            
+	            
+	            
+	            
+	            
 	        }
 
 	        return localUser;
@@ -62,5 +89,12 @@ PasswordResetTokenRepository passwordResetTokenRepository;
 		        passwordResetTokenRepository.save(myToken);
 			
 		}
+		@Override
+		public String updateinofo(User user) {
+			
+			userRepository.save(user);
+			return null;
+		}
+		
 
 }
